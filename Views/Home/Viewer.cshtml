@@ -1,0 +1,200 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UI</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    <link href="@Url.Content("~/Content/home.css")" rel="stylesheet" />
+    @{
+        string uiFormat = ViewBag.UiFormat;
+        if (uiFormat == "table" || uiFormat == "default")
+        {
+            <link href="~/Content/table-ui.css" rel="stylesheet" />
+            <script>
+                $(document).on('click', '.btn-toggle', function () {
+                    let _this = $(this);
+
+                    $(this).parents('tr').next().slideToggle("fast", "swing", function () {
+                        if ($(_this).parents('tr').next().is(":visible")) {
+                            $(_this).text('-');
+                        }
+                        else {
+                            $(_this).text('+');
+                        }
+                    });
+                });
+            </script>
+        }
+        else if (uiFormat == "list")
+        {
+            <link href="~/Content/list-ui.css" rel="stylesheet" />
+        }
+        else
+        {
+            @*<script src="https://cdnjs.cloudflare.com/ajax/libs/orgchart/3.1.3/js/jquery.orgchart.min.js" integrity="sha512-WoWsor3nr9YbuUCR9Obu5Ops8K/Vy7pwrQr8dDNpXbOlaivBxeCpxJO81o+ZnjcFjWgRw27TCiZ7vGRyf7CTbQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                <link href="~/Content/chart-ui.css" rel="stylesheet" />*@
+
+            <script src="~/Content/orgchart.js"></script>
+            <link href="~/Content/orgchart.css" rel="stylesheet" />
+        }
+    }
+
+
+</head>
+<body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark shadow-sm py-0">
+        <a class="navbar-brand" href="@Url.Action("Index")">uAPI Doc Viewer</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index")">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Viewer")">Viewer</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid" style="margin-top:4rem;margin-bottom:4rem;">
+        <div class="content">
+            @{
+                bool exception = ViewBag.ExceptionOccurred;
+                if (exception)
+                {
+                    <p class="lead">@ViewBag.Message</p>
+                }
+                else
+                {
+                    if (uiFormat == "table" || uiFormat == "default")
+                    {
+                        <div class="p-2">
+                            <span class="text-danger">Red</span> is Root.
+                            <span class="text-success">Green</span> is Element.
+                            <span class="text-info">Blue</span> is Attribute.
+                        </div>
+                        @Html.Raw(ViewBag.Content)
+                    }
+                    else if (uiFormat == "chart")
+                    {
+                        <div style="display:none;">@Html.Raw(ViewBag.Content)</div>
+                        <div id="chart-container"></div>
+                    }
+                    else
+                    {
+                        @Html.Raw(ViewBag.Content)
+                    }
+                }
+            }
+        </div>
+    </div>
+
+    <div class="controls shadow-sm bg-dark text-white">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-auto">
+                    <form action="@Url.Action("Viewer")" class="form-inline my-2 my-lg-0">
+
+                        <select class="form-control form-control-sm" id="ddlAPIEndpoint">
+                            <option value="">Please select any API</option>
+                            <optgroup label="Air">
+                                <option value="https://support.travelport.com/webhelp/uapi/Subsystems/Schemas/Content/Schemas/AvailabilitySearchReq.html">Availability Request</option>
+                                <option value="https://support.travelport.com/webhelp/uapi/Subsystems/Schemas/Content/Schemas/AvailabilitySearchRsp.html">Availability Response</option>
+
+                                <option value="https://support.travelport.com/webhelp/uapi/Subsystems/Schemas/Content/Schemas/LowFareSearchReq.html">Low fare search Request (Air + Rail)</option>
+                                <option value="https://support.travelport.com/webhelp/uapi/Subsystems/Schemas/Content/Schemas/LowFareSearchRsp.html">Low fare search Response (Air + Rail)</option>
+
+                                <option value="https://support.travelport.com/webhelp/uapi/Subsystems/Schemas/Content/Schemas/AirPriceReq.html">Air Pricing Request</option>
+                                <option value="https://support.travelport.com/webhelp/uapi/Subsystems/Schemas/Content/Schemas/AirPriceRsp.html">Air Pricing Response</option>
+
+                                <option value="https://support.travelport.com/webhelp/uapi/Subsystems/Schemas/Content/Schemas/AirCreateReservationReq.html">Air Booking Request</option>
+                                <option value="https://support.travelport.com/webhelp/uapi/Subsystems/Schemas/Content/Schemas/AirCreateReservationRsp.html">Air Booking Response</option>
+                            </optgroup>
+                            <optgroup label="Vehicle">
+                                <option value="https://support.travelport.com/webhelp/uapi/Subsystems/Schemas/Content/Schemas/VehicleSearchAvailabilityReq.html">Low fare search Request</option>
+                                <option value="https://support.travelport.com/webhelp/uapi/Subsystems/Schemas/Content/Schemas/VehicleSearchAvailabilityRsp.html">Low fare search Response</option>
+                            </optgroup>
+                            <optgroup label="Hotel">
+                                <option value="https://support.travelport.com/webhelp/uapi/Subsystems/Schemas/Content/Schemas/HotelSearchAvailabilityReq.html">Hotel search Availability Request</option>
+                                <option value="https://support.travelport.com/webhelp/uapi/Subsystems/Schemas/Content/Schemas/HotelSearchAvailabilityRsp.html">Hotel search Availability Response</option>
+                            </optgroup>
+                        </select>
+
+                        <span class="ml-2 mr-2"> or </span>
+
+                        <input class="form-control form-control-sm mr-sm-2"
+                               id="txtAPIEndpoint"
+                               type="search"
+                               placeholder="Enter URL.."
+                               value="@ViewBag.TargetURL"
+                               aria-label="Search">
+
+                        <input type="hidden" name="targetURL" id="hdnTargetURL" value="@ViewBag.TargetURL" />
+
+                        <select class="form-control form-control-sm" id="ddlUIFormat" name="uiFormat">
+                            <option value="default" @(uiFormat == "default" ? "selected" : "")>UI format (default: Table)</option>
+                            <option value="table" @(uiFormat == "table" ? "selected" : "")>Table</option>
+                            <option value="list" @(uiFormat == "list" ? "selected" : "")>List</option>
+                            <option value="chart" @(uiFormat == "chart" ? "selected" : "")>Chart (beta)</option>
+                        </select>
+                        <button class="btn btn-sm btn-success ml-2" id="btnSubmit" type="submit">Load data</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            var oc = $('#chart-container').orgchart({
+                'data': $('#chartUlLiDataSource'),
+                /*'visibleLevel': 3,*/
+                /*'direction': 'l2r'*/
+                'pan': true,
+                'zoom': true
+            });
+
+            $('.orgchart').addClass('noncollapsable');
+            $('.orgchart').css('transform', '');
+
+            oc.$chartContainer.on('touchmove', function (event) {
+                event.preventDefault();
+            });
+        });
+
+        $(document).on('change', '#ddlAPIEndpoint', function () {
+            let value = $(this).val();
+            if (value == '') {
+                $('#txtAPIEndpoint').val('');
+                $('#hdnTargetURL').val('');
+                return;
+            }
+
+            $('#txtAPIEndpoint').val($(this).val());
+            $('#hdnTargetURL').val($(this).val());
+            $('#btnSubmit').focus();
+        });
+
+        $(document).on('keyup', '#txtAPIEndpoint', function () {
+            let value = $(this).val();
+            if (value == '') {
+                return;
+            }
+
+            $('#hdnTargetURL').val($(this).val().trim());
+        });
+    </script>
+</body>
+</html>
