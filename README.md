@@ -4,7 +4,7 @@
  
 Having found the default schema UI of uAPI documentation difficult, I wanted to create my own easy flexible viewer out of passion. Feel free to check the output [here](http://apps.binkith.com/uAPIDocViewer/Home/Viewer)
 
-You can browse the sample URLs or you can enter any schema URL see the modified UI.
+You can browse the sample URLs or you can enter any schema URL to see the modified UI.
 
 **Three UI modes are available as of now**
 
@@ -19,9 +19,9 @@ You can browse the sample URLs or you can enter any schema URL see the modified 
 App Images:
 
 Original
-[Original UI](https://raw.githubusercontent.com/binkith/uAPIDocViewer/main/AppImages/original.png)
+![Original UI](https://raw.githubusercontent.com/binkith/uAPIDocViewer/main/AppImages/original.png)
 
 Updated UI
-[Table UI](https://raw.githubusercontent.com/binkith/uAPIDocViewer/main/AppImages/1.png)
-[UlLi List UI](https://raw.githubusercontent.com/binkith/uAPIDocViewer/main/AppImages/3.png)
-[Chart UI](https://raw.githubusercontent.com/binkith/uAPIDocViewer/main/AppImages/4.png)
+![Table UI](https://raw.githubusercontent.com/binkith/uAPIDocViewer/main/AppImages/1.png)
+![UlLi List UI](https://raw.githubusercontent.com/binkith/uAPIDocViewer/main/AppImages/3.png)
+![Chart UI](https://raw.githubusercontent.com/binkith/uAPIDocViewer/main/AppImages/4.png)
