@@ -23,5 +23,6 @@ Original
 
 Updated UI
 ![Table UI](https://raw.githubusercontent.com/binkith/uAPIDocViewer/main/AppImages/1.png)
+![Table UI](https://raw.githubusercontent.com/binkith/uAPIDocViewer/main/AppImages/2.png)
 ![UlLi List UI](https://raw.githubusercontent.com/binkith/uAPIDocViewer/main/AppImages/3.png)
 ![Chart UI](https://raw.githubusercontent.com/binkith/uAPIDocViewer/main/AppImages/4.png)
