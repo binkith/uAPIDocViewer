@@ -31,4 +31,4 @@ Credits and tools used:
 
 1. [For the UlLi list UI](https://iamkate.com/code/tree-views/)
 2. [jQuery Orgchart](https://github.com/dabeng/OrgChart)
-3. [Home page URL](Photo by Tanathip Rattanatum: https://www.pexels.com/photo/red-airplane-2026324/)
+3. [Home page background image](https://www.pexels.com/photo/red-airplane-2026324/)
