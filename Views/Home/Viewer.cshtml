@@ -47,7 +47,22 @@
         }
     }
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-32D47TKF4Q"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
+        gtag('config', 'G-32D47TKF4Q');
+    </script>
+    <script type="text/javascript">
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "f3yze465cb");
+    </script>
 </head>
 <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark shadow-sm py-0">
@@ -85,7 +100,11 @@
                             <span class="text-success">Green</span> is Element.
                             <span class="text-info">Blue</span> is Attribute.
                         </div>
-                        @Html.Raw(ViewBag.Content)
+
+                        <div class="table-responsive">
+                            @Html.Raw(ViewBag.Content)
+                        </div>
+
                     }
                     else if (uiFormat == "chart")
                     {
@@ -107,7 +126,7 @@
                 <div class="col-md-auto">
                     <form action="@Url.Action("Viewer")" class="form-inline my-2 my-lg-0">
 
-                        <select class="form-control form-control-sm" id="ddlAPIEndpoint">
+                        <select class="form-control form-control-sm mt-1 mb-1" id="ddlAPIEndpoint">
                             <option value="">Please select any API</option>
                             <optgroup label="Air">
                                 <option value="https://support.travelport.com/webhelp/uapi/Subsystems/Schemas/Content/Schemas/AvailabilitySearchReq.html">Availability Request</option>
@@ -134,7 +153,7 @@
 
                         <span class="ml-2 mr-2"> or </span>
 
-                        <input class="form-control form-control-sm mr-sm-2"
+                        <input class="form-control form-control-sm mr-sm-2 mt-1 mb-1"
                                id="txtAPIEndpoint"
                                type="search"
                                placeholder="Enter URL.."
@@ -143,13 +162,13 @@
 
                         <input type="hidden" name="targetURL" id="hdnTargetURL" value="@ViewBag.TargetURL" />
 
-                        <select class="form-control form-control-sm" id="ddlUIFormat" name="uiFormat">
+                        <select class="form-control form-control-sm mt-1 mb-1" id="ddlUIFormat" name="uiFormat">
                             <option value="default" @(uiFormat == "default" ? "selected" : "")>UI format (default: Table)</option>
                             <option value="table" @(uiFormat == "table" ? "selected" : "")>Table</option>
                             <option value="list" @(uiFormat == "list" ? "selected" : "")>List</option>
                             <option value="chart" @(uiFormat == "chart" ? "selected" : "")>Chart (beta)</option>
                         </select>
-                        <button class="btn btn-sm btn-success ml-2" id="btnSubmit" type="submit">Load data</button>
+                        <button class="btn btn-sm btn-success ml-sm-2 mt-1 mb-1" id="btnSubmit" type="submit">Load data</button>
                     </form>
                 </div>
             </div>

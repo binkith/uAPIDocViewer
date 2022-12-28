@@ -22,7 +22,13 @@ Original
 ![Original UI](https://raw.githubusercontent.com/binkith/uAPIDocViewer/main/AppImages/original.png)
 
 Updated UI
-![Table UI](https://raw.githubusercontent.com/binkith/uAPIDocViewer/main/AppImages/1.png)
-![Table UI](https://raw.githubusercontent.com/binkith/uAPIDocViewer/main/AppImages/2.png)
-![UlLi List UI](https://raw.githubusercontent.com/binkith/uAPIDocViewer/main/AppImages/3.png)
-![Chart UI](https://raw.githubusercontent.com/binkith/uAPIDocViewer/main/AppImages/4.png)
+![Table UI](http://apps.binkith.com/uAPIDocViewer/AppImages/1.png)
+![Table UI](http://apps.binkith.com/uAPIDocViewer/AppImages/2.png)
+![UlLi List UI](http://apps.binkith.com/uAPIDocViewer/AppImages/3.png)
+![Chart UI](http://apps.binkith.com/uAPIDocViewer/AppImages/4.png)
+
+Credits and tools used:
+
+[For the UlLi list UI](https://iamkate.com/code/tree-views/)
+[jQuery Orgchart](https://github.com/dabeng/OrgChart)
+[Home page URL](Photo by Tanathip Rattanatum: https://www.pexels.com/photo/red-airplane-2026324/)

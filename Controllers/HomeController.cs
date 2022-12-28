@@ -408,7 +408,3 @@ namespace uAPIDocViewer.Controllers
         }
     }
 }
-
-//https://iamkate.com/code/tree-views/
-//https://stackoverflow.com/questions/50832129/css-is-not-proper-of-org-chart-structured-with-ul-and-li
-//Photo by Tanathip Rattanatum: https://www.pexels.com/photo/red-airplane-2026324/
