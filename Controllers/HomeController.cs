@@ -363,11 +363,15 @@ namespace uAPIDocViewer.Controllers
 
             foreach (var child in children)
             {
+                bool showCollapseButton = false;
                 string nodeType = child.Type.Contains("element") ? "element" : "attribute";
+
+                if (nodeType == "element" && child.Children.Count > 0)
+                    showCollapseButton = true;
 
                 liList.AppendLine($"<tr class='{nodeType}'>");
                 liList.AppendLine("<td>");
-                if (nodeType == "element") liList.AppendLine($"<button class='btn-toggle btn btn-sm btn-dark'>-</button>");
+                if (showCollapseButton) liList.AppendLine($"<button class='btn-toggle btn btn-sm btn-dark'>-</button>");
                 else liList.AppendLine($"");
                 liList.AppendLine("</td>");
 

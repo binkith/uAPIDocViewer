@@ -22,8 +22,9 @@
                 $(document).on('click', '.btn-toggle', function () {
                     let _this = $(this);
 
-                    $(this).parents('tr').next().slideToggle("fast", "swing", function () {
-                        if ($(_this).parents('tr').next().is(":visible")) {
+                    var target = $(_this).parent().parent().next();
+                    $(target).slideToggle("fast", "swing", function () {
+                        if ($(target).is(":visible")) {
                             $(_this).text('-');
                         }
                         else {
