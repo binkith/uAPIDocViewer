@@ -19,7 +19,7 @@ You can browse the sample URLs or you can enter any schema URL to see the modifi
 App Images:
 
 Original
-![Original UI](https://raw.githubusercontent.com/binkith/uAPIDocViewer/main/AppImages/original.png)
+![Original UI](http://apps.binkith.com/uAPIDocViewer/AppImages/original.png)
 
 Updated UI
 ![Table UI](http://apps.binkith.com/uAPIDocViewer/AppImages/1.png)
@@ -30,5 +30,7 @@ Updated UI
 Credits and tools used:
 
 [For the UlLi list UI](https://iamkate.com/code/tree-views/)
+
 [jQuery Orgchart](https://github.com/dabeng/OrgChart)
+
 [Home page URL](Photo by Tanathip Rattanatum: https://www.pexels.com/photo/red-airplane-2026324/)
